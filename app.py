@@ -14,9 +14,10 @@ supabase: Client = create_client(url, key)
 
 
 # routes
-@app.route('/<level>/<category>')
-def get_guide_by_level_and_category(level = None, category = None):
+@app.route('/<category>/<level>')
+def get_guide_by_category_and_level(category=None, level=None):
     # query supabase
-    response = supabase.table('guides').select("*").eq('level', level).eq('category', category).execute()
+    response = supabase.table('guides').select(
+        "*").eq('category', category).eq('level', level).execute()
     # return response
     return str(response.data)
