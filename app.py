@@ -2,10 +2,12 @@ import os
 from supabase import create_client, Client
 from flask import Flask
 from dotenv import load_dotenv
+from flask_cors import CORS
 load_dotenv()
 
 # flask
 app = Flask(__name__)
+CORS(app)
 
 # supabase
 url: str = os.environ.get("SUPABASE_URL")
