@@ -25,4 +25,4 @@ def get_guide_by_category_and_level(category=None, level=None):
     response = supabase.table('guides').select(
         "*").eq('category', category).eq('level', level).execute()
     # return response
-    return str(response.data)
+    return jsonify(response.data)
