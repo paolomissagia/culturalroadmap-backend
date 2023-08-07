@@ -4,6 +4,8 @@ from flask import Flask, jsonify
 from flask import jsonify
 from dotenv import load_dotenv
 from flask_cors import CORS
+
+# enviroment variables
 load_dotenv()
 
 # flask
@@ -23,4 +25,4 @@ def get_guide_by_category_and_level(category=None, level=None):
     response = supabase.table('guides').select(
         "*").eq('category', category).eq('level', level).execute()
     # return response
-    return jsonify(response)
+    return string(response.data)
